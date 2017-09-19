@@ -1,2 +1,2 @@
 ## Wut
-Bad example of how use db, handlers, web-sockets etc
+How to db, handlers, web-sockets etc

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link href="../assets/main.css" rel="stylesheet">
+    <link href="../assets/chat.css" rel="stylesheet">
+    <title>Main page</title>
+<script type="text/javascript">
+
+	var ws = new WebSocket("ws://localhost:8000/ws");
+
+	function sendMessage() {
+		var msg = document.getElementById("msg");
+		var chatbox = document.getElementById("chatbox");
+		chatbox.innerHTML +=   msg.value + '<br/>';
+		ws.send(msg.value)
+	}
+
+	
+         
+             ws.onopen = function()
+               {
+                  // Web Socket is connected, send data using send()
+                  //ws.send("The server started...");
+                  myTextArea.value = myTextArea.value + "\n" + "First message sent";
+               };
+
+                ws.onmessage = function (evt)
+               {
+                  
+                  var chatbox = document.getElementById("chatbox");
+                  chatbox.innerHTML =  evt.data + '<br/>';
+                	
+               };
+
+               ws.onclose = function()
+               {
+                  var myTextArea = document.getElementById("textarea1");
+                  myTextArea.value = myTextArea.value + "\n" + "Connection closed";
+               };
+
+         
+
+</script>
+</head>
+<body>
+   <div class="container">
+<div class="topnav" id="myTopnav">
+  <a href="/home">Home</a>
+  <a href="/news">News</a>
+  <a href="/posts">My Posts</a>
+  <a href="/newpost">New post</a>
+  <a href="/chat">Chat</a>
+</div>
+
+
+<div id="chatbox">
+
+</div>
+
+
+
+	<input type="text" name="" placeholder="Type here" id="msg" />
+	<input type="submit" name="" value="Send"  onclick="javascript:sendMessage()"/> 
+
+</div>
+  
+</body>
+
+</html>

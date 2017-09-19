@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link href="../assets/main.css" rel="stylesheet">
+     <!-- <link href="../assets/write.css" rel="stylesheet"> -->
+    <title> page</title>
+
+
+</head>
+<body>
+    <div class="container">
+<div class="topnav" id="myTopnav">
+  <a href="/home">Home</a>
+  <a href="/news">News</a>
+  <a href="/posts">My Posts</a>
+  <a href="/newpost">New post</a>
+    <a href="/chat">Chat</a>
+</div>
+{{ range $key, $value := . }}
+
+	<h2 style="text-align: center"><{{ $value.Title }}</h2>
+	<h3 style="text-align: center"> {{ $value.Content }} </h3>
+
+{{end }}
+</div>
+
+</body>
+</html>
